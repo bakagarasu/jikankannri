@@ -1,308 +1,289 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Hiragino Sans'}
-    span.s1 {font: 12.0px 'Hiragino Sans'}
-    span.s2 {font: 12.0px 'Apple Color Emoji'}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スクール管理 🎀</title>
+
+<style>
+body{
+font-family:-apple-system;
+background:linear-gradient(#ffe3f0,#e3f0ff);
+margin:0;
+padding:10px;
+text-align:center;
+}
+
+.container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+max-width:420px;
+margin:auto;
+}
+
+.box{
+background:white;
+border-radius:20px;
+padding:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.full{grid-column:span 2;}
+
+canvas{
+width:100%;
+height:200px;
+}
+
+input{
+margin:3px;
+padding:5px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+border:none;
+background:#ff9ecb;
+color:white;
+border-radius:10px;
+padding:5px 10px;
+margin:3px;
+}
+
+.todo-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:5px 0;
+font-size:14px;
+}
+
+.warn{color:red;font-size:12px;}
+</style>
 </head>
+
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ja"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1">&lt;title&gt;<span class="s1">スクール管理</span> <span class="s2">🎀</span>&lt;/title&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1">body{</p>
-<p class="p1">font-family:-apple-system;</p>
-<p class="p1">background:linear-gradient(#ffe3f0,#e3f0ff);</p>
-<p class="p1">margin:0;</p>
-<p class="p1">padding:10px;</p>
-<p class="p1">text-align:center;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.container{</p>
-<p class="p1">display:grid;</p>
-<p class="p1">grid-template-columns:1fr 1fr;</p>
-<p class="p1">gap:10px;</p>
-<p class="p1">max-width:420px;</p>
-<p class="p1">margin:auto;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.box{</p>
-<p class="p1">background:white;</p>
-<p class="p1">border-radius:20px;</p>
-<p class="p1">padding:10px;</p>
-<p class="p1">box-shadow:0 5px 15px rgba(0,0,0,0.1);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.full{grid-column:span 2;}</p>
-<p class="p2"><br></p>
-<p class="p1">canvas{</p>
-<p class="p1">width:100%;</p>
-<p class="p1">height:200px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">input{</p>
-<p class="p1">margin:3px;</p>
-<p class="p1">padding:5px;</p>
-<p class="p1">border-radius:10px;</p>
-<p class="p1">border:1px solid #ccc;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">button{</p>
-<p class="p1">border:none;</p>
-<p class="p1">background:#ff9ecb;</p>
-<p class="p1">color:white;</p>
-<p class="p1">border-radius:10px;</p>
-<p class="p1">padding:5px 10px;</p>
-<p class="p1">margin:3px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.todo-item{</p>
-<p class="p1">display:flex;</p>
-<p class="p1">justify-content:space-between;</p>
-<p class="p1">align-items:center;</p>
-<p class="p1">margin:5px 0;</p>
-<p class="p1">font-size:14px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.warn{color:red;font-size:12px;}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;h2&gt;<span class="s1">スクール管理</span> <span class="s2">🎀</span>&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="container"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- <span class="s1">時計</span> --&gt;</p>
-<p class="p1">&lt;div class="box"&gt;</p>
-<p class="p1">&lt;canvas id="clockChart"&gt;&lt;/canvas&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div style="font-size:12px;"&gt;</p>
-<p class="p1"><span class="s2">🌙</span> &lt;input type="time" id="sleepStart" value="22:00"&gt;</p>
-<p class="p3">〜</p>
-<p class="p1">&lt;input type="time" id="sleepEnd" value="07:00"&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="s2">🏫</span> &lt;input type="time" id="schoolStart" value="08:30"&gt;</p>
-<p class="p3">〜</p>
-<p class="p1">&lt;input type="time" id="schoolEnd" value="15:30"&gt;&lt;br&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;button onclick="updateClock()"&gt;<span class="s1">更新</span>&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div id="warn" class="warn"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- ToDo --&gt;</p>
-<p class="p1">&lt;div class="box"&gt;</p>
-<p class="p1">&lt;h3&gt;ToDo&lt;/h3&gt;</p>
-<p class="p1">&lt;div id="todoList"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;input id="todoInput" placeholder="<span class="s1">やること</span>"&gt;</p>
-<p class="p1">&lt;button onclick="addTodo()"&gt;<span class="s1">追加</span>&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- <span class="s1">持ち物</span> --&gt;</p>
-<p class="p1">&lt;div class="box full"&gt;</p>
-<p class="p1">&lt;h3&gt;<span class="s1">持ち物</span>&lt;/h3&gt;</p>
-<p class="p1">&lt;div id="itemList"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;input id="itemInput" placeholder="<span class="s1">持ち物</span>"&gt;</p>
-<p class="p1">&lt;button onclick="addItem()"&gt;<span class="s1">追加</span>&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">// ===== <span class="s1">時計目盛りプラグイン</span> =====</p>
-<p class="p1">const clockTicks = {</p>
-<p class="p1">id: 'clockTicks',</p>
-<p class="p1">afterDraw(chart) {</p>
-<p class="p1">const {ctx} = chart;</p>
-<p class="p1">const cx = chart.width / 2;</p>
-<p class="p1">const cy = chart.height / 2;</p>
-<p class="p1">const r = chart._metasets[0].data[0].outerRadius + 10;</p>
-<p class="p2"><br></p>
-<p class="p1">ctx.save();</p>
-<p class="p1">ctx.textAlign = "center";</p>
-<p class="p1">ctx.textBaseline = "middle";</p>
-<p class="p1">ctx.font = "10px sans-serif";</p>
-<p class="p2"><br></p>
-<p class="p1">for(let i=0;i&lt;24;i++){</p>
-<p class="p1">let angle = (i/24)*2*Math.PI - Math.PI/2;</p>
-<p class="p2"><br></p>
-<p class="p1">let x = cx + Math.cos(angle)*r;</p>
-<p class="p1">let y = cy + Math.sin(angle)*r;</p>
-<p class="p2"><br></p>
-<p class="p1">ctx.fillText(i, x, y);</p>
-<p class="p2"><br></p>
-<p class="p1">let x1 = cx + Math.cos(angle)*(r-8);</p>
-<p class="p1">let y1 = cy + Math.sin(angle)*(r-8);</p>
-<p class="p2"><br></p>
-<p class="p1">ctx.beginPath();</p>
-<p class="p1">ctx.moveTo(x1,y1);</p>
-<p class="p1">ctx.lineTo(x,y);</p>
-<p class="p1">ctx.strokeStyle="#aaa";</p>
-<p class="p1">ctx.stroke();</p>
-<p class="p1">}</p>
-<p class="p1">ctx.restore();</p>
-<p class="p1">}</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== <span class="s1">時間処理</span> =====</p>
-<p class="p1">function t2m(t){</p>
-<p class="p1">let [h,m]=t.split(":");</p>
-<p class="p1">return h*60 + +m;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function span(s,e){</p>
-<p class="p1">if(e&lt;s) e+=1440;</p>
-<p class="p1">return e-s;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function overlap(a,b,c,d){</p>
-<p class="p1">if(b&lt;a)b+=1440;</p>
-<p class="p1">if(d&lt;c)d+=1440;</p>
-<p class="p1">return Math.max(a,c) &lt; Math.min(b,d);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== <span class="s1">時計</span> =====</p>
-<p class="p1">let chart;</p>
-<p class="p2"><br></p>
-<p class="p1">function updateClock(){</p>
-<p class="p2"><br></p>
-<p class="p1">let s1=t2m(sleepStart.value);</p>
-<p class="p1">let s2=t2m(sleepEnd.value);</p>
-<p class="p1">let sc1=t2m(schoolStart.value);</p>
-<p class="p1">let sc2=t2m(schoolEnd.value);</p>
-<p class="p2"><br></p>
-<p class="p1">let sleep=span(s1,s2);</p>
-<p class="p1">let school=span(sc1,sc2);</p>
-<p class="p1">let free=1440 - sleep - school;</p>
-<p class="p2"><br></p>
-<p class="p1">let over=overlap(s1,s2,sc1,sc2);</p>
-<p class="p2"><br></p>
-<p class="p1">warn.innerText = over ? "<span class="s2">⚠️</span> <span class="s1">時間かぶってる！</span>" : "";</p>
-<p class="p2"><br></p>
-<p class="p1">if(chart) chart.destroy();</p>
-<p class="p2"><br></p>
-<p class="p1">chart = new Chart(clockChart,{</p>
-<p class="p1">type:"doughnut",</p>
-<p class="p1">data:{</p>
-<p class="p1">datasets:[{</p>
-<p class="p1">data:[sleep,school,free],</p>
-<p class="p1">backgroundColor:[</p>
-<p class="p1">over ? "#ff6b6b" : "#caffbf",</p>
-<p class="p1">"#a0c4ff",</p>
-<p class="p1">"#ffd6a5"</p>
-<p class="p1">]</p>
-<p class="p1">}]</p>
-<p class="p1">},</p>
-<p class="p1">options:{</p>
-<p class="p1">rotation:-90,</p>
-<p class="p1">circumference:360,</p>
-<p class="p1">plugins:{legend:{display:false}}</p>
-<p class="p1">},</p>
-<p class="p1">plugins:[clockTicks]</p>
-<p class="p1">});</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== ToDo =====</p>
-<p class="p1">let todo = JSON.parse(localStorage.getItem("todo")||"[]");</p>
-<p class="p2"><br></p>
-<p class="p1">function renderTodo(){</p>
-<p class="p1">todoList.innerHTML = todo.map((t,i)=&gt;`</p>
-<p class="p1">&lt;div class="todo-item"&gt;</p>
-<p class="p1">&lt;label&gt;</p>
-<p class="p1">&lt;input type="checkbox" ${t.done?"checked":""} onclick="toggleTodo(${i})"&gt;</p>
-<p class="p1">${t.text}</p>
-<p class="p1">&lt;/label&gt;</p>
-<p class="p1">&lt;div&gt;</p>
-<p class="p1">&lt;button onclick="addCal('${t.text}')"&gt;<span class="s2">📅</span>&lt;/button&gt;</p>
-<p class="p1">&lt;button onclick="delTodo(${i})"&gt;×&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;`).join("");</p>
-<p class="p2"><br></p>
-<p class="p1">localStorage.setItem("todo",JSON.stringify(todo));</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function addTodo(){</p>
-<p class="p1">let v=todoInput.value;</p>
-<p class="p1">if(!v)return;</p>
-<p class="p1">todo.push({text:v,done:false});</p>
-<p class="p1">todoInput.value="";</p>
-<p class="p1">renderTodo();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function toggleTodo(i){</p>
-<p class="p1">todo[i].done=!todo[i].done;</p>
-<p class="p1">renderTodo();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function delTodo(i){</p>
-<p class="p1">todo.splice(i,1);</p>
-<p class="p1">renderTodo();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== <span class="s1">カレンダー</span> =====</p>
-<p class="p1">function addCal(text){</p>
-<p class="p1">let t=encodeURIComponent(text);</p>
-<p class="p1">let d=new Date();</p>
-<p class="p1">let y=d.getFullYear();</p>
-<p class="p1">let m=String(d.getMonth()+1).padStart(2,'0');</p>
-<p class="p1">let da=String(d.getDate()).padStart(2,'0');</p>
-<p class="p2"><br></p>
-<p class="p1">let url=`https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=${t}&amp;dates=${y}${m}${da}/${y}${m}${da}`;</p>
-<p class="p2"><br></p>
-<p class="p1">window.open(url);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== <span class="s1">持ち物</span> =====</p>
-<p class="p1">let items = JSON.parse(localStorage.getItem("items")||"[]");</p>
-<p class="p2"><br></p>
-<p class="p1">function renderItems(){</p>
-<p class="p1">itemList.innerHTML = items.map((t,i)=&gt;`</p>
-<p class="p1">&lt;div class="todo-item"&gt;</p>
-<p class="p1">&lt;label&gt;&lt;input type="checkbox"&gt; ${t}&lt;/label&gt;</p>
-<p class="p1">&lt;button onclick="delItem(${i})"&gt;×&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;`).join("");</p>
-<p class="p2"><br></p>
-<p class="p1">localStorage.setItem("items",JSON.stringify(items));</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function addItem(){</p>
-<p class="p1">let v=itemInput.value;</p>
-<p class="p1">if(!v)return;</p>
-<p class="p1">items.push(v);</p>
-<p class="p1">itemInput.value="";</p>
-<p class="p1">renderItems();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function delItem(i){</p>
-<p class="p1">items.splice(i,1);</p>
-<p class="p1">renderItems();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ===== <span class="s1">初期表示</span> =====</p>
-<p class="p1">updateClock();</p>
-<p class="p1">renderTodo();</p>
-<p class="p1">renderItems();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<h2>スクール管理 🎀</h2>
+
+<div class="container">
+
+<!-- 時計 -->
+<div class="box">
+<canvas id="clockChart"></canvas>
+
+<div style="font-size:12px;">
+🌙 <input type="time" id="sleepStart" value="22:00">
+〜
+<input type="time" id="sleepEnd" value="07:00"><br>
+
+🏫 <input type="time" id="schoolStart" value="08:30">
+〜
+<input type="time" id="schoolEnd" value="15:30"><br>
+
+<button onclick="updateClock()">更新</button>
+</div>
+
+<div id="warn" class="warn"></div>
+</div>
+
+<!-- ToDo -->
+<div class="box">
+<h3>ToDo</h3>
+<div id="todoList"></div>
+<input id="todoInput" placeholder="やること">
+<button onclick="addTodo()">追加</button>
+</div>
+
+<!-- 持ち物 -->
+<div class="box full">
+<h3>持ち物</h3>
+<div id="itemList"></div>
+<input id="itemInput" placeholder="持ち物">
+<button onclick="addItem()">追加</button>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// ===== 時計目盛りプラグイン =====
+const clockTicks = {
+id: 'clockTicks',
+afterDraw(chart) {
+const {ctx} = chart;
+const cx = chart.width / 2;
+const cy = chart.height / 2;
+const r = chart._metasets[0].data[0].outerRadius + 10;
+
+ctx.save();
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+ctx.font = "10px sans-serif";
+
+for(let i=0;i<24;i++){
+let angle = (i/24)*2*Math.PI - Math.PI/2;
+
+let x = cx + Math.cos(angle)*r;
+let y = cy + Math.sin(angle)*r;
+
+ctx.fillText(i, x, y);
+
+let x1 = cx + Math.cos(angle)*(r-8);
+let y1 = cy + Math.sin(angle)*(r-8);
+
+ctx.beginPath();
+ctx.moveTo(x1,y1);
+ctx.lineTo(x,y);
+ctx.strokeStyle="#aaa";
+ctx.stroke();
+}
+ctx.restore();
+}
+};
+
+// ===== 時間処理 =====
+function t2m(t){
+let [h,m]=t.split(":");
+return h*60 + +m;
+}
+
+function span(s,e){
+if(e<s) e+=1440;
+return e-s;
+}
+
+function overlap(a,b,c,d){
+if(b<a)b+=1440;
+if(d<c)d+=1440;
+return Math.max(a,c) < Math.min(b,d);
+}
+
+// ===== 時計 =====
+let chart;
+
+function updateClock(){
+
+let s1=t2m(sleepStart.value);
+let s2=t2m(sleepEnd.value);
+let sc1=t2m(schoolStart.value);
+let sc2=t2m(schoolEnd.value);
+
+let sleep=span(s1,s2);
+let school=span(sc1,sc2);
+let free=1440 - sleep - school;
+
+let over=overlap(s1,s2,sc1,sc2);
+
+warn.innerText = over ? "⚠️ 時間かぶってる！" : "";
+
+if(chart) chart.destroy();
+
+chart = new Chart(clockChart,{
+type:"doughnut",
+data:{
+datasets:[{
+data:[sleep,school,free],
+backgroundColor:[
+over ? "#ff6b6b" : "#caffbf",
+"#a0c4ff",
+"#ffd6a5"
+]
+}]
+},
+options:{
+rotation:-90,
+circumference:360,
+plugins:{legend:{display:false}}
+},
+plugins:[clockTicks]
+});
+}
+
+// ===== ToDo =====
+let todo = JSON.parse(localStorage.getItem("todo")||"[]");
+
+function renderTodo(){
+todoList.innerHTML = todo.map((t,i)=>`
+<div class="todo-item">
+<label>
+<input type="checkbox" ${t.done?"checked":""} onclick="toggleTodo(${i})">
+${t.text}
+</label>
+<div>
+<button onclick="addCal('${t.text}')">📅</button>
+<button onclick="delTodo(${i})">×</button>
+</div>
+</div>`).join("");
+
+localStorage.setItem("todo",JSON.stringify(todo));
+}
+
+function addTodo(){
+let v=todoInput.value;
+if(!v)return;
+todo.push({text:v,done:false});
+todoInput.value="";
+renderTodo();
+}
+
+function toggleTodo(i){
+todo[i].done=!todo[i].done;
+renderTodo();
+}
+
+function delTodo(i){
+todo.splice(i,1);
+renderTodo();
+}
+
+// ===== カレンダー =====
+function addCal(text){
+let t=encodeURIComponent(text);
+let d=new Date();
+let y=d.getFullYear();
+let m=String(d.getMonth()+1).padStart(2,'0');
+let da=String(d.getDate()).padStart(2,'0');
+
+let url=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${t}&dates=${y}${m}${da}/${y}${m}${da}`;
+
+window.open(url);
+}
+
+// ===== 持ち物 =====
+let items = JSON.parse(localStorage.getItem("items")||"[]");
+
+function renderItems(){
+itemList.innerHTML = items.map((t,i)=>`
+<div class="todo-item">
+<label><input type="checkbox"> ${t}</label>
+<button onclick="delItem(${i})">×</button>
+</div>`).join("");
+
+localStorage.setItem("items",JSON.stringify(items));
+}
+
+function addItem(){
+let v=itemInput.value;
+if(!v)return;
+items.push(v);
+itemInput.value="";
+renderItems();
+}
+
+function delItem(i){
+items.splice(i,1);
+renderItems();
+}
+
+// ===== 初期表示 =====
+updateClock();
+renderTodo();
+renderItems();
+</script>
+
 </body>
 </html>
